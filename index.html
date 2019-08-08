@@ -6,6 +6,23 @@
 		<meta http-equiv="refresh" content="3">
 	</head>
 	<body>
-		<h1>Etch-a-sketch</h1>
+		<div id="container"></div>
+
+		<script type="text/javascript">
+			const ROWS = 16;
+			const COLS = 16;
+
+			let container = document.body.querySelector('#container');
+
+			for(let i = 0; i < ROWS; ++i)
+			{
+				for(let j = 0; j < COLS; ++j)
+				{
+					let div = document.createElement('div');
+					div.textContent = `(${i}, ${j})`;
+					container.appendChild(div);
+				}
+			}
+		</script>
 	</body>
 </html>
