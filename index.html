@@ -5,50 +5,13 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="refresh" content="3">
 		<style>
-			:root {
-				--numRows: 16;
-				--numCols: 16;
-			}
-
-			.container {
-				display: grid;
-				grid-template-columns: repeat(var(--numCols), auto);
-				grid-template-rows: repeat(var(--numRows), auto);
-			}
-
-			.container > div {
-				background: #eee;
-				padding: 0;
-			}
-
-			.container > div:nth-child(odd) {
-				background: #ddd;
-			}
-
-			.container > div:hover {
-				background: #000;
-			}
 		</style>
 	</head>
 	<body>
 		<div class="container"></div>
 
 		<script type="text/javascript">
-			let container = document.body.querySelector('.container');
 
-			const htmlStyles = window.getComputedStyle(document.querySelector('html'));
-			const numRows = parseInt(htmlStyles.getPropertyValue('--numRows'));
-			const numCols = parseInt(htmlStyles.getPropertyValue('--numCols'));
-
-			for(let i = 0; i < numRows; ++i)
-			{
-				for(let j = 0; j < numCols; ++j)
-				{
-					let div = document.createElement('div');
-					div.textContent = `a`;
-					container.appendChild(div);
-				}
-			}
 		</script>
 	</body>
 </html>
