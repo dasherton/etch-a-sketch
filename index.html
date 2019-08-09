@@ -14,8 +14,6 @@
 				display: grid;
 				grid-template-columns: repeat(var(--numCols), auto);
 				grid-template-rows: repeat(var(--numRows), auto);
-				grid-column-gap: 0.3em;
-				grid-row-gap: 0.3em;
 			}
 
 			.container > div {
@@ -25,6 +23,10 @@
 
 			.container > div:nth-child(odd) {
 				background: #ddd;
+			}
+
+			.container > div:hover {
+				background: #000;
 			}
 		</style>
 	</head>
@@ -43,7 +45,7 @@
 				for(let j = 0; j < numCols; ++j)
 				{
 					let div = document.createElement('div');
-					div.textContent = `(${i}, ${j})`;
+					div.textContent = `a`;
 					container.appendChild(div);
 				}
 			}
