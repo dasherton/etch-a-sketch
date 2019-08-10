@@ -5,13 +5,47 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="refresh" content="3">
 		<style>
+			body {
+				display: flex;
+				justify-content: center;
+			}
+
+			#grid {
+				display: flex;
+				flex-direction: column;
+				background: #BADA55;
+				width: 50%;
+				height: 90vh;
+				margin: 0;
+			}
+
+			.row {
+				display: flex;
+				flex-direction: row;
+				flex: 1;
+			}
+
+			.cell {
+				flex: 1;
+				border: 1px solid black;
+			}
 		</style>
 	</head>
 	<body>
-		<div class="container"></div>
+		<div id="grid">
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+		</div>
 
 		<script type="text/javascript">
-
 		</script>
 	</body>
 </html>
