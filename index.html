@@ -16,7 +16,6 @@
 				background: #BADA55;
 				width: 50%;
 				height: 90vh;
-				margin: 0;
 			}
 
 			.row {
@@ -29,10 +28,6 @@
 				flex: 1;
 				border: 1px solid black;
 			}
-
-			.cell:hover {
-				background: #000;
-			}
 		</style>
 	</head>
 	<body>
@@ -40,33 +35,35 @@
 
 		<script type="text/javascript">
 
+			let grid = document.getElementById('grid');
 			let cells = document.getElementsByClassName('cell');
+
+			function removeChildren(parent)
+			{
+				while(parent.firstChild) {
+					parent.removeChild(parent.firstChild);
+				}
+			}
 
 			function createGrid(numRows, numCols)
 			{
-				var grid = document.getElementById('grid');
+				removeChildren(grid);
 
 				for(let i = 0; i < numRows; ++i)
 				{
 					let row = document.createElement('div');
-					row.className = 'row';
-					grid.appendChild(row);
-					createCols(row, numCols);
+					grid.appendChild(row).className = "row";
+
+					for(let j = 0; j < numCols; ++j)
+					{
+						let col = document.createElement('div');
+						row.appendChild(col).className = "cell";
+					}
 				}
 
 				forEachCell((cell) => {
 					cell.addEventListener('mouseover', paintBlack);
 				})
-			}
-
-			function createCols(parent, numCols)
-			{
-				for(let i = 0; i < numCols; ++i)
-				{
-					let col = document.createElement('div');
-					col.className = "cell";
-					parent.appendChild(col);
-				}
 			}
 
 			function paintBlack()
@@ -80,7 +77,7 @@
 				Array.from(cells).forEach(fn);
 			}
 
-			createGrid(7, 7);
+			createGrid(16, 16);
 		</script>
 	</body>
 </html>
