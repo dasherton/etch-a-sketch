@@ -1,6 +1,3 @@
-let grid = document.getElementById('grid');
-let cells = document.getElementsByClassName('cell');
-
 function removeChildren(parent)
 {
 	while(parent.firstChild) {
@@ -8,10 +5,8 @@ function removeChildren(parent)
 	}
 }
 
-function createGrid(numRows, numCols)
+function populateGrid(grid, numRows, numCols)
 {
-	removeChildren(grid);
-
 	for(let i = 0; i < numRows; ++i)
 	{
 		let row = document.createElement('div');
@@ -23,6 +18,14 @@ function createGrid(numRows, numCols)
 			row.appendChild(col).className = "cell";
 		}
 	}
+}
+
+function createGrid(numRows, numCols)
+{
+	let grid = document.getElementById('grid');
+
+	removeChildren(grid);
+	populateGrid(grid, numRows, numCols);
 
 	forEachCell((cell) => {
 		cell.addEventListener('mouseover', paintBlack);
@@ -37,7 +40,7 @@ function paintBlack()
 
 function forEachCell(fn)
 {
-	Array.from(cells).forEach(fn);
+	Array.from(document.getElementsByClassName('cell')).forEach(fn);
 }
 
 createGrid(16, 16);
