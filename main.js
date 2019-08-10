@@ -1,6 +1,6 @@
 const MIN_GRID_DIMENSION = 16;
 
-let colorType;
+let colorType = 'black';
 
 function removeChildren(parent)
 {
@@ -50,14 +50,26 @@ function shadeCell(cell)
 	}
 }
 
+function blackenCell(cell)
+{
+	cell.style.backgroundColor = 'black';
+	cell.style.opacity = 1;
+}
+
+function getPainter()
+{
+	switch(colorType)
+	{
+		case 'shade': return shadeCell;
+		case 'black': return blackenCell;
+		default: return blackenCell;
+	}
+}
+
 function paint()
 {
-	console.log(colorType);
-
-	if(colorType=="shade")
-	{
-		shadeCell(this);
-	}
+	let painter = getPainter();
+	painter(this);
 }
 
 function forEachCell(fn)
