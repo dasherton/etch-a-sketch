@@ -1,5 +1,7 @@
 body {
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #grid {
@@ -8,7 +10,6 @@ body {
 	background: #BADA55;
 	width: 50%;
 	height: 90vh;
-	margin: 0 auto;
 }
 
 .row {
