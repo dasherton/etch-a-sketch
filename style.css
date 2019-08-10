@@ -20,8 +20,5 @@ body {
 
 .cell {
 	flex: 1;
-}
-
-#reset-button {
-	margin-bottom: 1em;
+	background-color: white;
 }

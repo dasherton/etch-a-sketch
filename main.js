@@ -1,5 +1,7 @@
 const MIN_GRID_DIMENSION = 16;
 
+let colorType;
+
 function removeChildren(parent)
 {
 	while(parent.firstChild) {
@@ -30,23 +32,31 @@ function createGrid(numRows, numCols)
 	populateGrid(grid, numRows, numCols);
 
 	forEachCell((cell) => {
-		cell.addEventListener('mouseover', shade);
+		cell.addEventListener('mouseover', paint);
 	})
 }
 
-function shade()
+function shadeCell(cell)
 {
-	this.style.backgroundColor = "white";
-
-	if(this.style.filter == '')
+	if(cell.style.filter == '')
 	{
-		this.style.filter = 'brightness(90%)';
+		cell.style.filter = 'brightness(90%)';
 	}
-	else if(this.style.filter != 'brightness(0%)')
+	else if(cell.style.filter != 'brightness(0%)')
 	{
-		let current = this.style.filter.slice(-4, -2);
+		let current = cell.style.filter.slice(-4, -2);
 		current -= 10;
-		this.style.filter = `brightness(${current}%)`;
+		cell.style.filter = `brightness(${current}%)`;
+	}
+}
+
+function paint()
+{
+	console.log(colorType);
+
+	if(colorType=="shade")
+	{
+		shadeCell(this);
 	}
 }
 
@@ -79,7 +89,24 @@ function requestNewGrid()
 	createGrid(dim, dim);
 }
 
-let reset = document.getElementById('reset-button');
-reset.addEventListener('click', requestNewGrid);
+function setColorType(type)
+{
+	colorType = type;
+}
+
+function addColorChangeEventListeners()
+{
+	let colorButtons = document.querySelectorAll('#button-container > .clickable');
+
+	colorButtons.forEach ( (button) => {
+		button.addEventListener('mousedown', () => {
+			setColorType(button.name);
+		});
+	});
+}
+
+document.getElementById('reset-button').addEventListener('click', requestNewGrid);
 
 createGrid(MIN_GRID_DIMENSION, MIN_GRID_DIMENSION);
+
+addColorChangeEventListeners();
