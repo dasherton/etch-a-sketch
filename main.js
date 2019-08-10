@@ -56,12 +56,32 @@ function blackenCell(cell)
 	cell.style.opacity = 1;
 }
 
+function colorCell(cell)
+{
+	let color = pickRandomColor();
+	cell.style.backgroundColor = color;
+	cell.style.opacity = 1;
+}
+
+function pickRandomColor()
+{
+	let color = '#';
+	const digits = '0123456789ABCDEF';
+
+	for(let i = 0; i < 4; ++i)
+	{
+		color += digits[Math.floor(Math.random() * 16)];
+	}
+	return color;
+}
+
 function getPainter()
 {
 	switch(colorType)
 	{
 		case 'shade': return shadeCell;
 		case 'black': return blackenCell;
+		case 'color': return colorCell;
 		default: return blackenCell;
 	}
 }
