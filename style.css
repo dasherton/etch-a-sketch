@@ -1,0 +1,23 @@
+body {
+	display: flex;
+	justify-content: center;
+}
+
+#grid {
+	display: flex;
+	flex-direction: column;
+	background: #BADA55;
+	width: 50%;
+	height: 90vh;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+}
+
+.cell {
+	flex: 1;
+	border: 1px solid black;
+}
