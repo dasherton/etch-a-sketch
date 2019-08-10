@@ -41,3 +41,8 @@ function forEachCell(fn)
 }
 
 createGrid(16, 16);
+
+let reset = document.getElementById('reset-button');
+reset.addEventListener('click', () => {
+	createGrid(16, 16);
+});
