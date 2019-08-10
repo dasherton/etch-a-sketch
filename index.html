@@ -36,20 +36,35 @@
 		</style>
 	</head>
 	<body>
-		<div id="grid">
-			<div class="row">
-				<div class="cell"></div>
-				<div class="cell"></div>
-				<div class="cell"></div>
-			</div>
-			<div class="row">
-				<div class="cell"></div>
-				<div class="cell"></div>
-				<div class="cell"></div>
-			</div>
-		</div>
+		<div id="grid"></div>
 
 		<script type="text/javascript">
+
+			function createGrid(numRows, numCols)
+			{
+				var grid = document.getElementById('grid');
+
+				for(let i = 0; i < numRows; ++i)
+				{
+					let row = document.createElement('div');
+					row.className = 'row';
+					grid.appendChild(row);
+					createCols(row, numCols);
+				}
+			}
+
+			function createCols(parent, numCols)
+			{
+				for(let i = 0; i < numCols; ++i)
+				{
+					let col = document.createElement('div');
+					col.className = "cell";
+					parent.appendChild(col);
+				}
+			}
+
+			createGrid(7, 7);
+
 		</script>
 	</body>
 </html>
