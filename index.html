@@ -54,7 +54,9 @@
 					createCols(row, numCols);
 				}
 
-				paintBlackOnHover();
+				forEachCell((cell) => {
+					cell.addEventListener('mouseover', paintBlack);
+				})
 			}
 
 			function createCols(parent, numCols)
@@ -73,15 +75,12 @@
 				this.style.opacity = 1;
 			}
 
-			function paintBlackOnHover(fn)
+			function forEachCell(fn)
 			{
-				Array.from(cells).forEach( (cell) => {
-					cell.addEventListener('mouseover', paintBlack);
-				});
+				Array.from(cells).forEach(fn);
 			}
 
 			createGrid(7, 7);
-
 		</script>
 	</body>
 </html>
