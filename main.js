@@ -43,9 +43,17 @@ function forEachCell(fn)
 	Array.from(document.getElementsByClassName('cell')).forEach(fn);
 }
 
+function requestDimension()
+{
+	let n = prompt("How big do you want the grid?");
+	return parseInt(n);
+}
+
 createGrid(16, 16);
 
 let reset = document.getElementById('reset-button');
+
 reset.addEventListener('click', () => {
-	createGrid(16, 16);
+	let dim = requestDimension();
+	createGrid(dim, dim);
 });
