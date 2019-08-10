@@ -7,9 +7,9 @@ body {
 #grid {
 	display: flex;
 	flex-direction: column;
-	background: #BADA55;
 	width: 50%;
 	height: 90vh;
+	border: 1px solid black;
 }
 
 .row {
@@ -20,7 +20,6 @@ body {
 
 .cell {
 	flex: 1;
-	border: 1px solid black;
 }
 
 #reset-button {

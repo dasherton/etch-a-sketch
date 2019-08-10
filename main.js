@@ -30,14 +30,24 @@ function createGrid(numRows, numCols)
 	populateGrid(grid, numRows, numCols);
 
 	forEachCell((cell) => {
-		cell.addEventListener('mouseover', paintBlack);
+		cell.addEventListener('mouseover', shade);
 	})
 }
 
-function paintBlack()
+function shade()
 {
-	this.style.backgroundColor = "black";
-	this.style.opacity = 1;
+	this.style.backgroundColor = "white";
+
+	if(this.style.filter == '')
+	{
+		this.style.filter = 'brightness(90%)';
+	}
+	else if(this.style.filter != 'brightness(0%)')
+	{
+		let current = this.style.filter.slice(-4, -2);
+		current -= 10;
+		this.style.filter = `brightness(${current}%)`;
+	}
 }
 
 function forEachCell(fn)
