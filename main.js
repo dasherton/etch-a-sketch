@@ -45,11 +45,6 @@ function forEachCell(fn)
 	Array.from(document.getElementsByClassName('cell')).forEach(fn);
 }
 
-function invalid(n)
-{
-	return isNaN(n) || n < MIN_GRID_DIMENSION;
-}
-
 function requestDimension(minDimension)
 {
 	const str = prompt("Enter an integer for the new grid dimensions." +
@@ -57,7 +52,7 @@ function requestDimension(minDimension)
 
 	let n = parseInt(str);
 
-	while(invalid(n))
+	while( isNaN(n) || n < minDimension )
 	{
 		const s = prompt("Choice invalid. Enter an integer for the new grid dimensions." +
 			`Must be an integer greater or equal to ${minDimension}`);
@@ -68,12 +63,13 @@ function requestDimension(minDimension)
 	return n;
 }
 
-let reset = document.getElementById('reset-button');
-
-reset.addEventListener('click', () => {
-	let dim = requestDimension(MIN_GRID_DIMENSION);
-	console.log(dim);
+function requestNewGrid()
+{
+	const dim = requestDimension(MIN_GRID_DIMENSION);
 	createGrid(dim, dim);
-});
+}
+
+let reset = document.getElementById('reset-button');
+reset.addEventListener('click', requestNewGrid);
 
 createGrid(MIN_GRID_DIMENSION, MIN_GRID_DIMENSION);
