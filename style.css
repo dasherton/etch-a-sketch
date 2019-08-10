@@ -1,6 +1,5 @@
 body {
-	display: flex;
-	justify-content: center;
+	text-align: center;
 }
 
 #grid {
@@ -9,6 +8,7 @@ body {
 	background: #BADA55;
 	width: 50%;
 	height: 90vh;
+	margin: 0 auto;
 }
 
 .row {
