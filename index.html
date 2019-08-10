@@ -40,6 +40,8 @@
 
 		<script type="text/javascript">
 
+			let cells = document.getElementsByClassName('cell');
+
 			function createGrid(numRows, numCols)
 			{
 				var grid = document.getElementById('grid');
@@ -51,6 +53,8 @@
 					grid.appendChild(row);
 					createCols(row, numCols);
 				}
+
+				paintBlackOnHover();
 			}
 
 			function createCols(parent, numCols)
@@ -61,6 +65,19 @@
 					col.className = "cell";
 					parent.appendChild(col);
 				}
+			}
+
+			function paintBlack()
+			{
+				this.style.backgroundColor = "black";
+				this.style.opacity = 1;
+			}
+
+			function paintBlackOnHover(fn)
+			{
+				Array.from(cells).forEach( (cell) => {
+					cell.addEventListener('mouseover', paintBlack);
+				});
 			}
 
 			createGrid(7, 7);
