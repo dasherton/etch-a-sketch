@@ -68,7 +68,7 @@ function pickRandomColor()
 	let color = '#';
 	const digits = '0123456789ABCDEF';
 
-	for(let i = 0; i < 4; ++i)
+	for(let i = 0; i < 3; ++i)
 	{
 		color += digits[Math.floor(Math.random() * 16)];
 	}
