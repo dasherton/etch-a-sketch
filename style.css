@@ -22,3 +22,7 @@ body {
 	flex: 1;
 	background-color: white;
 }
+
+#button-container > button {
+	margin-bottom: 10px;
+}
